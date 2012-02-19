@@ -1,4 +1,4 @@
-# Mongoid::Bitfield
+# Mongoid::Bitfield  ![build status](http://travis-ci.org/asaaki/mongoid_bitfield.png)
 
 ## About
 
