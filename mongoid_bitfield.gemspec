@@ -17,7 +17,20 @@ Gem::Specification.new do |s|
     "README.md"
   ]
   s.files = [
-    "README.md"
+    ".rspec",
+    ".rvmrc",
+    ".travis.yml",
+    "Gemfile",
+    "Gemfile.lock",
+    "LICENSE",
+    "README.md",
+    "Rakefile",
+    "lib/mongoid/bitfield.rb",
+    "lib/mongoid/bitfield/version.rb",
+    "lib/mongoid_bitfield.rb",
+    "mongoid_bitfield.gemspec",
+    "spec/mongoid_bitfield_spec.rb",
+    "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/asaaki/mongoid_bitfield"
   s.licenses = ["MIT"]
@@ -31,6 +44,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<bson_ext>, [">= 0"])
       s.add_runtime_dependency(%q<mongoid>, [">= 0"])
+      s.add_runtime_dependency(%q<activesupport>, [">= 0"])
       s.add_development_dependency(%q<rake>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<database_cleaner>, [">= 0"])
@@ -40,6 +54,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<bson_ext>, [">= 0"])
       s.add_dependency(%q<mongoid>, [">= 0"])
+      s.add_dependency(%q<activesupport>, [">= 0"])
       s.add_dependency(%q<rake>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<database_cleaner>, [">= 0"])
@@ -50,6 +65,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<bson_ext>, [">= 0"])
     s.add_dependency(%q<mongoid>, [">= 0"])
+    s.add_dependency(%q<activesupport>, [">= 0"])
     s.add_dependency(%q<rake>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<database_cleaner>, [">= 0"])
