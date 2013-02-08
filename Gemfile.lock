@@ -55,7 +55,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   jeweler
-  mongoid
+  mongoid (>= 3.0.0)
   pry
   pry-doc
   rake
