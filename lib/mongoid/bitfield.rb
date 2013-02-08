@@ -1,4 +1,3 @@
-# encoding: utf-8
 module Mongoid
   module Bitfield
     extend ActiveSupport::Concern
@@ -11,7 +10,7 @@ module Mongoid
         bits.each do |bitname|
           define_method bitname do
             current = send(fieldname.to_sym) || 0
-            current[bits.index(bitname.to_sym)] == 1 ? true : false
+            current[bits.index(bitname.to_sym)] == 1
           end
 
           define_method :"#{bitname}=" do |boolean|
