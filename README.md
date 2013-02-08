@@ -1,4 +1,4 @@
-# Mongoid::Bitfield  ![build status](http://travis-ci.org/asaaki/mongoid_bitfield.png)
+# Mongoid::Bitfield
 
 ## About
 
@@ -63,4 +63,4 @@ user.drinker #=> true
 
 MIT/X11
 
-Copyright (c) 2012 Christoph 'asaaki' Grabo
+Copyright (c) 2012—2013 Christoph 'asaaki' Grabo

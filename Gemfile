@@ -1,14 +1,11 @@
-# encoding: utf-8
 source "https://rubygems.org"
 
-gem "bson_ext"
-gem "mongoid"
+gem "mongoid", ">= 3.0.0"
 gem "activesupport"
 
 group :development, :test do
   gem "rake"
   gem "rspec"
-  gem "database_cleaner"
   gem "jeweler"
 
   gem "pry"
