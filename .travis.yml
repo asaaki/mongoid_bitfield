@@ -1,11 +1,13 @@
 rvm:
   - 1.9.3
+  - 2.1.0
   - ruby-head
-  - rbx-19mode
+  - jruby-head
+  - rbx-2
 
 services:
   - mongodb
-  
+
 branches:
   only:
     - develop
