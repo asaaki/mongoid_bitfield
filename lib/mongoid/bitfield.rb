@@ -11,28 +11,30 @@ module Mongoid
 
         bits.each do |bitname|
           bitsymbol = bitname.to_sym
+          bit  = (1 << bits.index(bitsymbol))
+
           define_method bitname do
-            current = send(fieldsymbol) || 0
-            current[bits.index(bitsymbol)] == 1 ? true : false
+            res = send(fieldsymbol) & bit
+            res && res > 0
           end
 
           define_method :"#{bitname}=" do |boolean|
             unless boolean == send(bitsymbol)
               cur_value = send(fieldsymbol) || 0
-              bit_value = (1 << bits.index(bitsymbol))
-              new_value = (cur_value ^ bit_value)
+              new_value = (cur_value ^ bit)
+
               send(:"#{fieldname}=", new_value)
             end
           end
 
           define_method :"#{bitname}_enable!" do
             send(:"#{bitname}=", true)
-            set(fieldsymbol, (send(fieldsymbol) || 0))
+            bit(fieldsymbol => { or: bit })
           end
 
           define_method :"#{bitname}_disable!" do
             send(:"#{bitname}=", false)
-            set(fieldsymbol, (send(fieldsymbol) || 0))
+            bit(fieldsymbol => { and: ~bit })
           end
         end
       end
