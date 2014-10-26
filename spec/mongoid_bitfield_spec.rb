@@ -1,5 +1,4 @@
-# encoding: utf-8
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require "spec_helper"
 
 class TestDoc
   include Mongoid::Document
@@ -9,7 +8,6 @@ class TestDoc
 end
 
 describe Mongoid::Bitfield do
-
   let(:doc) { TestDoc.new }
 
   it ".bitfield sets a mongoid_field with provided name" do
@@ -38,30 +36,25 @@ describe Mongoid::Bitfield do
 
     it "gets a single bit" do
       doc.adult = true
-      expect(doc.is_admin).to be_falsy
-      expect(doc.drinker).to  be_falsy
-      expect(doc.adult).to    be_truthy
+      expect(doc.is_admin).to be(false)
+      expect(doc.drinker).to  be(false)
+      expect(doc.adult).to    be(true)
     end
   end
 
   context "enabler and disabler" do
-    before do
-      TestDoc.destroy_all
-    end
-
     it "enables a flag and save this state (atomically!)" do
-      td = TestDoc.create!(:flags => 0)
+      td = TestDoc.create!(flags: 0)
       td.is_admin_enable!
 
-      expect(TestDoc.first.is_admin).to be_truthy
+      expect(TestDoc.first.is_admin).to be(true)
     end
 
     it "disables a flag and save this state (atomically!)" do
-      td = TestDoc.create!(:flags => (1+2+4)) # all flags enabled
+      td = TestDoc.create!(flags: (1 + 2 + 4)) # all flags enabled
       td.drinker_disable!
 
-      expect(TestDoc.first.drinker).to be_falsy
+      expect(TestDoc.first.drinker).to be(false)
     end
   end
-
 end

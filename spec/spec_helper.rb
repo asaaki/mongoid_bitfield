@@ -1,12 +1,10 @@
-$LOAD_PATH.unshift(File.expand_path("../../lib",__FILE__))
-
-# require "database_cleaner"
 require "mongoid"
 require "mongoid_bitfield"
 
 RSpec.configure do |config|
-  config.before(:suite) do
+  config.after(:each) do
     Mongoid.purge!
+    Mongoid::IdentityMap.clear if defined?(Mongoid::IdentityMap)
   end
 end
 
