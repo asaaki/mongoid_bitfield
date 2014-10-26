@@ -1,27 +1,25 @@
-# encoding: utf-8
 module Mongoid
   module Bitfield
     extend ActiveSupport::Concern
 
     module ClassMethods
-
-      def bitfield fieldname, *bits
+      def bitfield(fieldname, *bits)
         fieldsymbol = fieldname.to_sym
         field fieldsymbol, :type => Integer
 
         bits.each do |bitname|
           bitsymbol = bitname.to_sym
-          bit  = (1 << bits.index(bitsymbol))
+          bit       = 1 << bits.index(bitsymbol)
 
           define_method bitname do
-            res = send(fieldsymbol) & bit
-            res && res > 0
+            result = send(fieldsymbol) & bit
+            result && result > 0
           end
 
           define_method :"#{bitname}=" do |boolean|
             unless boolean == send(bitsymbol)
-              cur_value = send(fieldsymbol) || 0
-              new_value = (cur_value ^ bit)
+              current_value = send(fieldsymbol) || 0
+              new_value     = current_value ^ bit
 
               send(:"#{fieldname}=", new_value)
             end
