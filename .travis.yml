@@ -1,9 +1,12 @@
+language: ruby
+
 rvm:
-  - 1.9.3
+  - 2.1.2
   - 2.1.0
-  - ruby-head
-  - jruby-head
+  - 2.0.0
+  - 1.9.3
   - rbx-2
+  - jruby-19mode
 
 services:
   - mongodb
@@ -12,7 +15,3 @@ branches:
   only:
     - develop
     - master
-
-notifications:
-  email:
-    - chris@dinarrr.com
