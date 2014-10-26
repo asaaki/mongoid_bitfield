@@ -38,9 +38,9 @@ describe Mongoid::Bitfield do
 
     it "gets a single bit" do
       doc.adult = true
-      doc.is_admin.should be_false
-      doc.drinker.should  be_false
-      doc.adult.should    be_true
+      doc.is_admin.should be_falsy
+      doc.drinker.should  be_falsy
+      doc.adult.should    be_truthy
     end
   end
 
@@ -53,14 +53,14 @@ describe Mongoid::Bitfield do
       td = TestDoc.create!(:flags => 0)
       td.is_admin_enable!
 
-      TestDoc.first.is_admin.should be_true
+      TestDoc.first.is_admin.should be_truthy
     end
 
     it "disables a flag and save this state (atomically!)" do
       td = TestDoc.create!(:flags => (1+2+4)) # all flags enabled
       td.drinker_disable!
 
-      TestDoc.first.drinker.should be_false
+      TestDoc.first.drinker.should be_falsy
     end
   end
 

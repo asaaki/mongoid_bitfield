@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "mongoid"
+gem "mongoid", "~> 4.0.0"
 gem "activesupport"
 
 group :development, :test do
