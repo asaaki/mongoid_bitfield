@@ -1,20 +1,13 @@
 # Mongoid::Bitfield
 
+[![gem version](https://badge.fury.io/rb/mongoid_bitfield.png)](http://badge.fury.io/rb/mongoid_bitfield) [![build status](https://secure.travis-ci.org/asaaki/mongoid_bitfield.png)](http://travis-ci.org/asaaki/mongoid_bitfield)
+
 ## About
 
 This tiny gem provides a bitfield or a collection of boolean bits/flags.
-
-This bitfield will be stored as an integer value in the mongodb database.
+This bitfield will be stored as an integer value in the MongoDB database.
 
 ## Install
-
-```shell
-gem install mongoid_bitfield
-```
-
-or
-
-Gemfile:
 
 ```ruby
 gem "mongoid_bitfield"
@@ -39,11 +32,8 @@ end
 
 ```ruby
 user = User.new
-
 user.is_admin #=> false
-
 user.is_admin = true
-
 user.is_admin #=> true
 ```
 
@@ -51,16 +41,13 @@ user.is_admin #=> true
 
 ```ruby
 user = User.create!
-
 user.drinker_enable!
-
 user.reload
-
 user.drinker #=> true
 ```
 
 ## License
 
-MIT/X11
+[MIT/X11](./LICENSE)
 
-Copyright (c) 2012—2013 Christoph 'asaaki' Grabo
+2012—2014 Christoph Grabo
